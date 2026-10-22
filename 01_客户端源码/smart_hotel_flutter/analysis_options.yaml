@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    unused_import: error
+    dead_code: error
+  exclude:
+    - build/**
+    - android/**
+    - windows/**
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    avoid_print: true

@@ -1,0 +1,26 @@
+{
+  "name": "smart-hotel-server",
+  "version": "1.0.0",
+  "description": "智慧客房项目模拟后端（Node.js + Express，仅用于客户端联调与教学演示）",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "keywords": [
+    "smart-hotel",
+    "harmonyos",
+    "mock-server",
+    "skills-competition"
+  ],
+  "license": "MIT"
+}

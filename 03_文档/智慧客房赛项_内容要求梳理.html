@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智慧客房赛项 · 内容要求梳理</title>
+<style>
+  :root{
+    --ink:#1b1f24; --ink-2:#434c56; --ink-3:#6b7683;
+    --line:#e3e7ec; --line-2:#eef1f5;
+    --bg:#ffffff; --paper:#f7f8fa;
+    --accent:#6b7f3a; --accent-soft:#f1f4e8;
+    --warn:#b3541e; --warn-soft:#fdf3ec;
+    --danger:#a3282a; --danger-soft:#fdf0f0;
+    --blue:#2c5c8f; --blue-soft:#eef3f9;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:0 0 64px; background:var(--paper); color:var(--ink);
+    font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:940px; margin:0 auto; background:var(--bg); padding:56px 64px 72px;
+    box-shadow:0 1px 3px rgba(20,30,40,.06);}
+  header{border-bottom:2px solid var(--ink); padding-bottom:20px; margin-bottom:8px}
+  .kicker{font-size:12px; letter-spacing:.18em; color:var(--accent); font-weight:600; margin-bottom:10px}
+  h1{font-size:29px; line-height:1.35; margin:0 0 12px; letter-spacing:-.01em}
+  .sub{color:var(--ink-3); font-size:13.5px}
+  .meta{display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:16px; font-size:12.5px; color:var(--ink-3)}
+  .meta b{color:var(--ink-2); font-weight:600}
+
+  h2{font-size:19px; margin:44px 0 6px; padding-left:12px; border-left:4px solid var(--accent); line-height:1.3}
+  h2 .num{color:var(--accent); font-variant-numeric:tabular-nums; margin-right:8px}
+  h3{font-size:15.5px; margin:26px 0 8px; color:var(--ink)}
+  h4{font-size:14px; margin:18px 0 6px; color:var(--ink-2)}
+  p{margin:10px 0}
+  ul,ol{margin:10px 0; padding-left:22px}
+  li{margin:5px 0}
+  code{background:#f2f4f7; padding:1px 5px; border-radius:3px; font-size:.9em;
+    font-family:"Cascadia Mono",Consolas,monospace; color:#333a41}
+  .lead{color:var(--ink-2); font-size:14.5px}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:13.5px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f4f6f8; font-weight:600; color:var(--ink-2); font-size:13px}
+  tr:nth-child(even) td{background:#fbfcfd}
+  td.k{width:20%; font-weight:600; color:var(--ink-2); background:#f7f8fa}
+
+  .box{border:1px solid var(--line); border-left-width:4px; border-radius:4px;
+    padding:14px 18px; margin:16px 0; background:#fbfcfd}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .box.accent{border-left-color:var(--accent); background:var(--accent-soft)}
+  .box.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+  .box.danger{border-left-color:var(--danger); background:var(--danger-soft)}
+  .box.info{border-left-color:var(--blue); background:var(--blue-soft)}
+  .box .t{font-weight:700; font-size:13px; letter-spacing:.02em; margin-bottom:6px}
+
+  .tag{display:inline-block; font-size:11px; padding:1px 7px; border-radius:10px;
+    font-weight:600; letter-spacing:.02em; white-space:nowrap}
+  .t-high{background:#fbe3e3; color:#93211f}
+  .t-mid{background:#fdeede; color:#8f4a14}
+  .t-low{background:#e9eef5; color:#2c5c8f}
+  .t-ok{background:#e6efdc; color:#4a5c22}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:760px){.page{padding:32px 22px} .grid2{grid-template-columns:1fr}}
+
+  .kv{font-size:13.5px}
+  .kv div{padding:6px 0; border-bottom:1px dashed var(--line)}
+  .kv div:last-child{border-bottom:none}
+  .kv span{display:inline-block; min-width:96px; color:var(--ink-3)}
+
+  .flow{display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:12px 0 4px; font-size:12.5px}
+  .flow i{font-style:normal; background:#f2f4f7; border:1px solid var(--line); border-radius:4px; padding:3px 9px}
+  .flow b{color:var(--ink-3); font-weight:400}
+
+  footer{margin-top:52px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-3)}
+
+  @media print{
+    body{background:#fff} .page{box-shadow:none; max-width:none; padding:0}
+    h2{page-break-after:avoid} table{page-break-inside:avoid}
+    .box{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="kicker">2026 深圳技能大赛 · 计算机程序设计员（鸿蒙智能体应用开发）</div>
+  <h1>「智慧客房」赛题内容要求梳理</h1>
+  <div class="sub">基于竞赛技术文件、接口文档、模拟后端说明、UI 原型与运行效果视频的交叉归纳</div>
+  <div class="meta">
+    <div><b>梳理范围</b>　5 类材料</div>
+    <div><b>材料时间</b>　2026-10</div>
+    <div><b>证据等级</b>　接口文档 = 强约束；视频 = 参照实现</div>
+  </div>
+</header>
+
+<div class="box danger" style="margin-top:24px">
+  <div class="t">阅读前必读：一处关键缺口</div>
+  <p>《附件2：…职业技能竞赛技术文件》在当前环境中无法读取——文件名虽为 <code>.docx</code>，实际是 Word 97-2003 二进制（OLE2）容器，且该路径被进程级安全策略拒绝访问，复制、改名、读取均被拦截。因此本报告中<b>涉及评分权重、竞赛时长、模块划分（A/B/C）、提交物清单、违规判定</b>等条款，均标注为「待补充」，不作臆测。其余四类材料已完整读取。</p>
+</div>
+
+<h2><span class="num">01</span>目标与背景</h2>
+
+<p class="lead">赛项考核的是<b>用 HarmonyOS 从零构建一个可联调的智能客房控制 App</b>，而不是写后端。命题方把后端和视觉素材全部做好，把"不确定因素"压缩到只剩客户端工程能力。</p>
+
+<table>
+  <tr><td class="k">赛项全称</td><td>深圳市第十六届职工技术创新运动会暨 2026 年深圳技能大赛 — 计算机程序设计员（鸿蒙智能体应用开发）职业技能竞赛</td></tr>
+  <tr><td class="k">赛题载体</td><td>智慧客房系统（HarmonyOS 酒店客房控制应用），口号"一掌握尽全房"</td></tr>
+  <tr><td class="k">业务场景</td><td>客人凭<b>房间号 + 姓名</b>登录，在手机上控制本房间的空调、灯光、窗帘、客房服务，并可触发 SOS 求助</td></tr>
+  <tr><td class="k">给定条件</td><td>13 个 REST 接口的模拟后端（Node.js + Express，内存存储）、UI 素材包、9 张高清预览图、113.7 秒运行效果视频</td></tr>
+  <tr><td class="k">考点边界</td><td>接口文档原文："客户端使用何种技术栈、模块封装方式不在本文档约束范围内"；后端 README 原文：模拟后端"<b>不是赛题的开发内容</b>"。→ 考点集中在<b>客户端</b>：页面结构、状态管理、接口联调、异常处理、动画与交互还原</td></tr>
+</table>
+
+<h3>背景逻辑：为什么是这个题</h3>
+<p>鸿蒙智能体应用开发的典型落地形态是"设备 + 场景 + 服务"的闭环。智慧客房把四类异构设备（温控、照明、遮阳、服务请求）压进一个竖屏 App，恰好覆盖 ArkTS 页面路由、状态驱动 UI、网络请求封装、Token 生命周期、动画与手势这些核心能力点。视频作为<b>参照实现（golden sample）</b>存在，意味着视觉还原度是可被比对的。</p>
+
+<h2><span class="num">02</span>核心要点</h2>
+
+<p class="lead">整体是"一号登录、四个 Tab、五类设备操作"。导航骨架固定为底部四页签：<b>首页 / 灯光 / 窗帘 / 服务</b>，登录页独立于外层。</p>
+
+<div class="flow">
+  <i>登录页</i><b>→</b><i>首页（空调 / 场景 / 快捷服务 / 晚安）</i><b>→</b><i>灯光页</i><b>→</b><i>窗帘页</i><b>→</b><i>服务页</i><b>→</b><i>退出登录</i>
+</div>
+
+<h3>2.1 登录与身份</h3>
+<ul>
+  <li>入参仅两项：<code>roomNo</code>、<code>guestName</code>，均必填且非空字符串；校验失败返回业务码 <code>1001</code>，账号不匹配返回 <code>1002</code>（"房间号或客人姓名错误"）。</li>
+  <li>成功返回 <code>token</code>（JWT / HS256 / 12 小时）+ <code>userInfo</code>（房号、姓名、入住日期）。</li>
+  <li>预置三组测试账号：<b>1209 / 乔安</b>、<b>1210 / 张明</b>、<b>1211 / 李娜</b>，入住日期均为 2026-05-26。</li>
+  <li>Token 必须<b>持久化保存</b>，冷启动时加载并自动恢复会话；收到 401（<code>1101</code> 无效 / <code>1102</code> 过期）时<b>清空本地 Token 并跳转登录页</b>。</li>
+  <li>登录页含"记住我的信息"勾选项（视频与预览图均有），默认勾选。</li>
+</ul>
+
+<h3>2.2 首页（信息中枢 + 高频操作）</h3>
+<table>
+  <tr><th style="width:22%">区域</th><th>要求</th></tr>
+  <tr><td>顶部</td><td>标题"智慧客房"、"乔安，欢迎回家。"（姓名取自 token/userInfo）、右上角房间号胶囊</td></tr>
+  <tr><td>空调卡</td><td>图标 + "运行中 / 已关闭"状态标签 + 电源键 + 减 / 目标温度大字 / 加 + 下方"当前温度：xx℃"；温度区间 <b>16–30℃ 整数</b>，步进 1℃</td></tr>
+  <tr><td>场景模式</td><td>首页展示 <b>4 张</b>：明亮、柔和、阅读、温馨（选中态用主题色高亮）</td></tr>
+  <tr><td>快捷服务</td><td>"请勿打扰""清理房间"两张卡，点击即切换，选中态高亮</td></tr>
+  <tr><td>晚安模式</td><td>独立长卡"一键关闭所有灯光"，右侧闭合眼睑图标</td></tr>
+  <tr><td>全局</td><td>操作结果以底部 Toast 反馈（如"已开启空调""已切换到柔和模式"）</td></tr>
+</table>
+
+<h3>2.3 灯光页（三种操作粒度并存）</h3>
+<ul>
+  <li><b>总开关</b>：一键全开 / 全关。<b>开</b>时 9 个灯全部置 true，且 <code>activeSceneId</code> 被服务端设为 <code>"bright"</code>；<b>关</b>时全部置 false，<code>activeSceneId</code> 设为 <code>"goodnight"</code>。</li>
+  <li><b>五个预设场景</b>（灯光页独有的睡眠模式在此）：</li>
+</ul>
+<table>
+  <tr><th style="width:16%">场景 ID</th><th style="width:16%">名称</th><th>点亮的灯具</th></tr>
+  <tr><td><code>bright</code></td><td>明亮模式</td><td>全部 9 盏</td></tr>
+  <tr><td><code>soft</code></td><td>柔和模式</td><td>落地灯、左阅读灯、右阅读灯</td></tr>
+  <tr><td><code>reading</code></td><td>阅读模式</td><td>左阅读灯、右阅读灯、书桌灯</td></tr>
+  <tr><td><code>cozy</code></td><td>温馨模式</td><td>落地灯、吧灯</td></tr>
+  <tr><td><code>sleep</code></td><td>睡眠模式</td><td>廊灯</td></tr>
+  <tr><td><code>goodnight</code></td><td>晚安模式（隐藏）</td><td>全部 9 盏关闭，等价"一键全关"</td></tr>
+  <tr><td><code>off</code></td><td>退出场景（隐藏）</td><td>不动灯具，仅清空 <code>activeSceneId</code></td></tr>
+</table>
+<ul>
+  <li><b>9 盏独立灯具</b>，顺序与 UI 一致（2 列布局）：洗漱间、衣柜灯、落地灯、吧灯、左阅读灯、右阅读灯、书桌灯、排风扇、廊灯。单灯操作后 <code>activeSceneId</code> 恒为 <code>null</code>（视为自定义状态），<code>masterLight</code> 按"任意灯亮即 true"重算。</li>
+</ul>
+
+<h3>2.4 窗帘页（唯一需要客户端做动画的模块）</h3>
+<ul>
+  <li>两组：布帘 <code>cloth</code>、窗纱 <code>sheer</code>；顶部"全部打开 / 全部关闭"批量操作。</li>
+  <li>单组三按钮：<b>打开 / 暂停 / 关闭</b>，动作与状态严格区分——动作 <code>open/pause/close</code>，状态 <code>opened/paused/closed</code>。</li>
+  <li><b>后端不模拟运动过程</b>：收到动作即把状态置为目标值，<b>开合动画必须由客户端实现</b>，包括中途暂停停在中间位置的效果。</li>
+  <li>批量接口只支持 <code>open</code> 与 <code>close</code>，不支持 <code>pause</code>。</li>
+</ul>
+
+<h3>2.5 服务页</h3>
+<ul>
+  <li>"请勿打扰""清理房间"两个独立开关（可同时开启），各自有开 / 关状态。</li>
+  <li>右上角红色 <b>SOS</b> 按钮：一次性事件触发，无状态、无参数；服务端仅打印警告日志，不对接真实前台。</li>
+  <li>底部"退出登录"描边按钮：服务端无状态、不作废 Token，<b>客户端必须自己清空本地 Token 与用户信息</b>。</li>
+</ul>
+
+<h3>2.6 数据与状态模型（决定架构）</h3>
+<p>核心是"<b>一个快照接口点亮整页</b>"的读模型：<code>GET /api/room/snapshot</code> 一次性返回 <code>room / ac / scenes / activeSceneId / masterLight / lights / curtains / services</code> 八块。首页进入调一次，子页面进入再调一次，各取所需字段。房间号由 Token 解析，客户端不传参。</p>
+<p>写操作全部是"命令 + 返回受影响对象"，客户端需用返回值刷新局部状态，而不是盲目乐观更新——因为服务端会做联动（如场景切换同时改 9 个灯与总开关）。</p>
+
+<h2><span class="num">03</span>格式与技术规范</h2>
+
+<div class="grid2">
+  <div>
+    <h4>技术栈与环境</h4>
+    <div class="kv">
+      <div><span>开发框架</span>HarmonyOS / ArkTS（DevEco Studio）</div>
+      <div><span>客户端目录</span>约定为 <code>smart_hotel/</code>，与 <code>smart_hotel_server/</code> 平级</div>
+      <div><span>后端运行</span>Node.js 18+（推荐 20/22 LTS）、<code>npm install</code> → <code>npm start</code></div>
+      <div><span>端口</span>3000（冲突改 <code>src/config.js</code>）</div>
+      <div><span>模拟器地址</span><code>http://10.0.2.2:3000</code></div>
+      <div><span>真机地址</span><code>http://&lt;电脑内网IP&gt;:3000</code>，需同一 Wi-Fi</div>
+      <div><span>本机地址</span><code>http://localhost:3000</code></div>
+    </div>
+  </div>
+  <div>
+    <h4>接口协议</h4>
+    <div class="kv">
+      <div><span>协议</span>HTTP/1.1 + JSON（UTF-8）</div>
+      <div><span>Content-Type</span><code>application/json</code></div>
+      <div><span>字段命名</span>camelCase 小驼峰</div>
+      <div><span>认证</span><code>Authorization: Bearer {token}</code></div>
+      <div><span>免鉴权</span>仅 <code>/api/ping</code>、<code>/api/auth/login</code></div>
+      <div><span>CORS</span>全开（对 App 无影响，便于浏览器调试）</div>
+      <div><span>网络延迟</span>每请求注入 100–300ms 随机延迟</div>
+    </div>
+  </div>
+</div>
+
+<h3>3.1 统一响应与双层判定</h3>
+<p>所有接口返回 <code>Result&lt;T&gt;</code>：<code>{ code: number, msg: string, data?: T }</code>。<b>业务成功码是 0，不是 200</b>；客户端必须两层判断——先看 HTTP 是否 2xx，再看 <code>code</code> 是否 0。文档明确要求 <code>msg</code> 仅用于 Toast 或调试，<b>不得用于业务判断</b>。</p>
+
+<table>
+  <tr><th style="width:12%">业务码</th><th style="width:10%">HTTP</th><th style="width:34%">含义</th><th>客户端处理要求</th></tr>
+  <tr><td><code>0</code></td><td>200</td><td>成功</td><td>取 <code>data</code> 使用</td></tr>
+  <tr><td><code>1001</code></td><td>200</td><td>参数错误（缺字段 / 类型不符 / 越界 / 非法 JSON）</td><td>Toast 错误消息</td></tr>
+  <tr><td><code>1002</code></td><td>200</td><td>房间号或客人姓名错误</td><td>仅登录接口，提示重输</td></tr>
+  <tr><td><code>1003</code></td><td>404</td><td>接口不存在</td><td>检查路径与请求方式</td></tr>
+  <tr><td><code>1101</code></td><td>401</td><td>Token 无效（缺失 / 格式错 / 签名错）</td><td>清空本地 Token，跳登录页</td></tr>
+  <tr><td><code>1102</code></td><td>401</td><td>Token 已过期</td><td>同上</td></tr>
+  <tr><td><code>1201</code></td><td>200</td><td>设备离线（保留码，Mock 未触发）</td><td>Toast"设备暂时无响应"</td></tr>
+  <tr><td><code>1202</code></td><td>200</td><td>设备繁忙（保留码，Mock 未触发）</td><td>Toast"操作太快，请稍后重试"</td></tr>
+  <tr><td><code>5000</code></td><td>500</td><td>服务器内部错误</td><td>Toast 通用错误提示</td></tr>
+</table>
+
+<h3>3.2 视觉与交互规范</h3>
+<ul>
+  <li><b>竖屏单列</b>布局，浅色玻璃拟态卡片（半透明 + 模糊）叠在客房实景背景图上；主色为橄榄绿/灰绿（<code>#8a9a5b</code> 量级），选中态用主色实底 + 白色文字/图标。</li>
+  <li>底部固定四页签，选中项为椭圆形主色胶囊包住图标 + 文字。</li>
+  <li>统一交互反馈：操作成功 → 底部胶囊 Toast；数据请求中 → 居中"加载中…"转圈遮罩（视频服务页可见）。</li>
+  <li>素材来自"鸿蒙智慧客房应用-UI素材包"（图标、背景、窗帘贴图），预览图提供 9 张状态稿：<code>00登录</code> / <code>00登录_fill</code> / <code>01首页</code> / <code>01首页_act</code> / <code>02灯光</code> / <code>02灯光_act</code> / <code>03窗帘</code> / <code>03窗帘_opening</code> / <code>04服务</code>，<code>_act</code> 为选中态、<code>_opening</code> 为开合过程中间帧、<code>_fill</code> 为填写态。</li>
+</ul>
+
+<h2><span class="num">04</span>限制条件</h2>
+
+<table>
+  <tr><th style="width:26%">约束</th><th>具体规定与影响</th></tr>
+  <tr><td>后端不持久化</td><td>所有房间状态存内存，<b>重启即还原默认快照</b>。持久化是<b>客户端的考点</b>，不是后端职责。同时意味着多次联调互不污染。</td></tr>
+  <tr><td>登出不作废 Token</td><td><code>/api/auth/logout</code> 无状态、不维护黑名单，Token 在 12 小时内仍可用。客户端必须自行清理本地存储并跳转。</td></tr>
+  <tr><td>温度边界</td><td>目标温度必须为 <b>整数且 ∈ [16, 30]</b>，越界返回 <code>1001</code>；<code>minTemp/maxTemp</code> 固定 16/30，不可改。</td></tr>
+  <tr><td>温度模拟</td><td><code>currentTemp</code> 由后端每秒 0.5℃ 向 <code>targetTemp</code> 逼近，<b>仅开机时</b>；关机保持不变。客户端反复拉快照才能看到连续变化。</td></tr>
+  <tr><td>隐藏场景</td><td><code>goodnight</code> 与 <code>off</code> 不出现在 <code>scenes</code> 列表，仅可作为 <code>POST /api/light/scene</code> 的入参；<code>off</code> 不会出现在 <code>activeSceneId</code> 中。</td></tr>
+  <tr><td>场景会覆盖手动态</td><td>任何场景切换都会按预设重排 9 盏灯；单灯操作会把 <code>activeSceneId</code> 清零。二者互斥，客户端高亮逻辑必须跟随服务端返回值。</td></tr>
+  <tr><td>批量窗帘限制</td><td>只接受 <code>open</code> / <code>close</code>，<code>pause</code> 在批量场景无意义、会被拒。</td></tr>
+  <tr><td>窗帘无位置量</td><td>接口只给三态，<b>没有 0–100 的位置字段</b>，暂停位置只能由客户端本地记录并自行绘制。</td></tr>
+  <tr><td>SOS 无状态</td><td>一次性事件，服务端不保存"求助中"状态，客户端不能靠快照判断 SOS 是否已发出。</td></tr>
+  <tr><td>素材与后端不可改</td><td>后端与 UI 素材由命题方提供，用于联调与还原；视频为效果参照。</td></tr>
+  <tr><td>保留错误码</td><td><code>1201/1202</code> 在 Mock 后端不会触发，属于"预留但当前不可测"的分支。</td></tr>
+</table>
+
+<h2><span class="num">05</span>交付物与验收标准</h2>
+
+<h3>5.1 可确认的交付物</h3>
+<table>
+  <tr><th style="width:26%">交付项</th><th>说明与依据</th></tr>
+  <tr><td>HarmonyOS 客户端工程</td><td>目录名约定 <code>smart_hotel/</code>，与 <code>smart_hotel_server/</code> 平级（接口文档第 6 节原文）</td></tr>
+  <tr><td>可运行应用</td><td>能在模拟器（<code>10.0.2.2:3000</code>）或真机（内网 IP）上完成登录 → 四页操作 → 退出的完整闭环</td></tr>
+  <tr><td>接口联调能力</td><td>13 个接口全部接通，含鉴权、错误码分支、Loading 与 Toast</td></tr>
+  <tr><td>视觉还原</td><td>与 UI 素材包 / 9 张预览图 / 运行效果视频保持一致</td></tr>
+  <tr><td>说明性材料</td><td>技术文件提及"模块 A 架构设计"等，具体清单<b>待补充</b></td></tr>
+</table>
+
+<h3>5.2 验收标准（可作为自查清单）</h3>
+<p>接口文档明确写了一句定调的话：<b>"本文档定义客户端与服务端之间的全部 REST 接口规范，作为联调与评分的依据。"</b> 由此可推出下面这张可判定的验收表。</p>
+
+<table>
+  <tr><th style="width:6%">#</th><th style="width:22%">验收项</th><th>判定点</th></tr>
+  <tr><td>1</td><td>登录闭环</td><td>正确账号进入首页并显示"姓名 + 房号"；错误账号提示"房间号或客人姓名错误"；空值提示字段级错误</td></tr>
+  <tr><td>2</td><td>会话持久化</td><td>杀进程重开免登录；Token 失效时自动回登录页</td></tr>
+  <tr><td>3</td><td>首页全量点亮</td><td>一次快照渲染空调、场景选中态、服务开关、总开关四块状态</td></tr>
+  <tr><td>4</td><td>空调</td><td>开关机、±温度（16–30 边界不可越界）、大字目标温度、小字当前温度随服务端变化</td></tr>
+  <tr><td>5</td><td>灯光</td><td>总开关联动 9 灯；5 场景预设组合正确；单灯可控且场景高亮自动取消</td></tr>
+  <tr><td>6</td><td>窗帘</td><td>三动作状态正确；批量开合正确；开合动画可暂停在中途</td></tr>
+  <tr><td>7</td><td>服务</td><td>两开关独立可同时开启；SOS 可触发并反馈；退出登录清空本地状态</td></tr>
+  <tr><td>8</td><td>异常与反馈</td><td>业务码非 0 一律 Toast；网络请求期间有 Loading；401 触发跳转</td></tr>
+  <tr><td>9</td><td>视觉一致性</td><td>与预览图逐屏比对：布局、配色、图标、选中态、Toast 样式</td></tr>
+</table>
+
+<h2><span class="num">06</span>模糊、缺失与冲突清单</h2>
+
+<p class="lead">以下问题在现有材料中<b>无法得到唯一解释</b>，实施前需要命题方澄清或自行决策并记录假设。<span class="tag t-high">高</span> 表示会直接影响实现路径或评分。</p>
+
+<table>
+  <tr><th style="width:6%">编号</th><th style="width:22%">问题</th><th style="width:9%">级别</th><th>说明与建议</th></tr>
+  <tr>
+    <td>Q1</td><td>技术文件整体缺失</td><td><span class="tag t-high">高</span></td>
+    <td>评分权重、竞赛时长、模块划分、提交物清单、违规与扣分规则全部未知。现有材料只能推出"功能 + 视觉"两维，无法推出配比。建议先补齐该文件再定排期。</td>
+  </tr>
+  <tr>
+    <td>Q2</td><td>首页场景卡数量冲突</td><td><span class="tag t-high">高</span></td>
+    <td>接口 <code>scenes</code> 返回 <b>5 个</b>（含睡眠），但首页与预览图只展示 <b>4 个</b>（明亮/柔和/阅读/温馨），睡眠模式只出现在灯光页。究竟是"首页故意裁掉睡眠"还是"应全量渲染"，无明文。建议按视频实现（首页 4 个），并在说明中记录。</td>
+  </tr>
+  <tr>
+    <td>Q3</td><td>温度大字含义易混</td><td><span class="tag t-mid">中</span></td>
+    <td>视频与预览图中大字 20–22℃ 实际是 <code>targetTemp</code>，小字才标注"当前温度"。而 <code>AcState.currentTemp</code> 才是实时值，字段名与视觉主次相反，实现时极易接错。建议以 <code>targetTemp</code> 驱动大字。</td>
+  </tr>
+  <tr>
+    <td>Q4</td><td><code>masterLight</code> 语义漂移</td><td><span class="tag t-mid">中</span></td>
+    <td>快照里它是"灯光总开关状态"，但单灯接口返回的 <code>masterLight</code> 定义为"任意灯亮即 true"。同一字段在两条链路上含义不同，客户端不能把它当作"用户是否按过总开关"来渲染。建议 UI 只用它做视觉态，不做逻辑判断。</td>
+  </tr>
+  <tr>
+    <td>Q5</td><td>暂停位置无数据支撑</td><td><span class="tag t-mid">中</span></td>
+    <td>窗帘只有 <code>opened/paused/closed</code> 三态，无位置百分比。暂停后重进页面，服务端只说"paused"，无法还原停在哪。客户端只能本地缓存位置；而服务重启后状态又回到 <code>closed</code>，与本地缓存冲突。建议本地缓存以服务端三态为准做校正。</td>
+  </tr>
+  <tr>
+    <td>Q6</td><td><code>goodnight</code> 会成为不可见的选中态</td><td><span class="tag t-mid">中</span></td>
+    <td>关总开关后 <code>activeSceneId = "goodnight"</code>，但该值不在 <code>scenes</code> 列表里。客户端若按列表匹配高亮，会出现"有选中态但无卡片高亮"的空档。需专门处理：映射到首页"晚安模式"卡的高亮。</td>
+  </tr>
+  <tr>
+    <td>Q7</td><td><code>off</code> 的触发入口未定义</td><td><span class="tag t-mid">中</span></td>
+    <td>文档只说 <code>off</code> 用于"首页晚安卡片重复点击时取消高亮"，但未规定：再点一次是否调 <code>off</code>、灯是否保持全关、Toast 文案是什么。建议实现为切换式。</td>
+  </tr>
+  <tr>
+    <td>Q8</td><td>两个服务开关的互斥性</td><td><span class="tag t-low">低</span></td>
+    <td>接口明确"相互独立，可同时开启"，但业务上"请勿打扰"与"清理房间"语义冲突。是否需要客户端做互斥提示，无规定。建议不做限制，保持与接口一致。</td>
+  </tr>
+  <tr>
+    <td>Q9</td><td>SOS 交互流程缺失</td><td><span class="tag t-mid">中</span></td>
+    <td>仅有"红按钮 + 一次性事件"。是否需要二次确认、倒计时、可取消、防重复点击、成功后的视觉反馈，全部未定义；视频中也未演示 SOS 点击效果。建议加二次确认 + 成功 Toast。</td>
+  </tr>
+  <tr>
+    <td>Q10</td><td>"记住我的信息"与 Token 的关系</td><td><span class="tag t-low">低</span></td>
+    <td>接口文档只要求持久化 Token，未规定勾选框控制什么（房号姓名？Token？两者？）。建议：勾选存账号 + Token，不勾选只存 Token 于内存。</td>
+  </tr>
+  <tr>
+    <td>Q11</td><td>保留错误码是否需实现</td><td><span class="tag t-low">低</span></td>
+    <td><code>1201/1202</code> 在 Mock 后端不会触发，无法验证。建议实现分支但标注"不可测"。</td>
+  </tr>
+  <tr>
+    <td>Q12</td><td>交付路径表述不一致</td><td><span class="tag t-low">低</span></td>
+    <td>接口文档说客户端项目与 <code>smart_hotel_server/</code> 平级；后端 README 却说接口文档"与 <code>Code/</code> 目录同级，位于 <code>Product/</code> 下"。两者描述的目录层级不吻合，需以赛场实际结构为准。</td>
+  </tr>
+  <tr>
+    <td>Q13</td><td>文件格式异常</td><td><span class="tag t-mid">中</span></td>
+    <td>技术文件扩展名为 <code>.docx</code>，实际为 OLE2（Word 97-2003）二进制，内嵌 WPS 元数据。Word 直接打开可能报"文件格式与扩展名不符"，建议改名 <code>.doc</code> 或用 WPS 打开后另存为标准 docx。</td>
+  </tr>
+  <tr>
+    <td>Q14</td><td>视频信息量受限</td><td><span class="tag t-low">低</span></td>
+    <td>113.7 秒、496×1066 竖屏录屏，<b>无音轨、无旁白、无字幕</b>。仅演示了正常路径，未覆盖：登录失败、Token 过期、网络异常、温度边界、单灯操作、睡眠模式、SOS 点击。这些只能从接口文档反推。</td>
+  </tr>
+  <tr>
+    <td>Q15</td><td>登录校验规则未细化</td><td><span class="tag t-low">低</span></td>
+    <td>未规定房号是否限数字、长度、是否 trim、姓名是否区分大小写与空格。Mock 后端按字符串精确匹配，客户端建议原样提交并 trim 首尾空格。</td>
+  </tr>
+</table>
+
+<h2><span class="num">07</span>附录</h2>
+
+<h3>7.1 接口清单（13 个）</h3>
+<table>
+  <tr><th style="width:6%">#</th><th style="width:10%">方法</th><th style="width:32%">路径</th><th>用途</th></tr>
+  <tr><td>1</td><td>GET</td><td><code>/api/ping</code></td><td>健康检查（免鉴权）</td></tr>
+  <tr><td>2</td><td>POST</td><td><code>/api/auth/login</code></td><td>登录获取 Token（免鉴权）</td></tr>
+  <tr><td>3</td><td>POST</td><td><code>/api/auth/logout</code></td><td>退出登录（无状态）</td></tr>
+  <tr><td>4</td><td>GET</td><td><code>/api/room/snapshot</code></td><td>整房快照（核心读接口）</td></tr>
+  <tr><td>5</td><td>POST</td><td><code>/api/ac/power</code></td><td>空调开关</td></tr>
+  <tr><td>6</td><td>POST</td><td><code>/api/ac/temperature</code></td><td>设置目标温度</td></tr>
+  <tr><td>7</td><td>POST</td><td><code>/api/light/master</code></td><td>灯光总开关</td></tr>
+  <tr><td>8</td><td>POST</td><td><code>/api/light/scene</code></td><td>切换灯光场景</td></tr>
+  <tr><td>9</td><td>POST</td><td><code>/api/light/toggle</code></td><td>单灯开关</td></tr>
+  <tr><td>10</td><td>POST</td><td><code>/api/curtain/control</code></td><td>单窗帘 open/pause/close</td></tr>
+  <tr><td>11</td><td>POST</td><td><code>/api/curtain/batch</code></td><td>批量窗帘 open/close</td></tr>
+  <tr><td>12</td><td>POST</td><td><code>/api/service/toggle</code></td><td>切换请勿打扰 / 清理房间</td></tr>
+  <tr><td>13</td><td>POST</td><td><code>/api/service/sos</code></td><td>触发 SOS（无参数）</td></tr>
+</table>
+
+<h3>7.2 视频时间轴（按帧还原）</h3>
+<table>
+  <tr><th style="width:16%">时间</th><th style="width:22%">页面</th><th>观察到的内容</th></tr>
+  <tr><td>00:00</td><td>登录页</td><td>"智慧客房 / 深圳技能竞赛"，房号 1209、姓名 乔安、勾选"记住我的信息"、"立即入住"</td></tr>
+  <tr><td>00:06</td><td>首页</td><td>"乔安，欢迎回家。"、房号胶囊、空调目标 20℃ / 当前 22℃、Toast"已开启空调"</td></tr>
+  <tr><td>00:16</td><td>首页</td><td>点"柔和模式"→ 卡片高亮，Toast"已切换到柔和模式"</td></tr>
+  <tr><td>00:24</td><td>首页下半</td><td>快捷服务两卡、晚安模式长卡，Toast"已关闭请勿打扰"</td></tr>
+  <tr><td>00:39</td><td>灯光页</td><td>总开关开启、温馨模式选中、9 灯两列（落地灯 / 吧灯 亮）</td></tr>
+  <tr><td>00:47</td><td>灯光页</td><td>关闭总开关，Toast"已关闭总开关"，场景高亮取消</td></tr>
+  <tr><td>00:51</td><td>窗帘页</td><td>布帘"打开"，Toast"布帘正在打开中…"，帘布向两侧移动</td></tr>
+  <tr><td>00:59–01:11</td><td>窗帘页</td><td>开合动画进行中；点"暂停"后停在中间，Toast"布帘已暂停"</td></tr>
+  <tr><td>01:35</td><td>窗帘页</td><td>"全部关闭"，Toast"布帘和窗纱已经完全关闭"</td></tr>
+  <tr><td>01:39</td><td>服务页</td><td>切换页面时显示居中"加载中…"遮罩（验证延迟模拟下的 Loading 态）</td></tr>
+  <tr><td>01:43–01:47</td><td>服务页</td><td>红色 SOS 按钮、请勿打扰 / 清理房间 两个开关（均开）、"退出登录"描边按钮</td></tr>
+  <tr><td>01:53</td><td>登录页</td><td>退出后回到登录页，账号信息保留（"记住我的信息"生效）</td></tr>
+</table>
+
+<h3>7.3 材料清单与可信度</h3>
+<table>
+  <tr><th style="width:34%">材料</th><th style="width:14%">状态</th><th>定位</th></tr>
+  <tr><td>智慧客房项目接口文档.docx</td><td><span class="tag t-ok">已读全</span></td><td>强约束。定义全部接口、字段、错误码，并声明"作为联调与评分的依据"</td></tr>
+  <tr><td>smart_hotel_server/README.md</td><td><span class="tag t-ok">已读全</span></td><td>环境与行为说明：端口、账号、延迟、温度模拟、Token 策略</td></tr>
+  <tr><td>智慧客房运行效果视频.mp4</td><td><span class="tag t-ok">已读全</span></td><td>参照实现，验证交互顺序、Toast 文案与动画细节；无音轨</td></tr>
+  <tr><td>7.高清预览图（9 张）</td><td><span class="tag t-ok">已读</span></td><td>视觉基准：默认态 / 选中态 / 填写态 / 开合中间帧</td></tr>
+  <tr><td>附件2：竞赛技术文件.docx</td><td><span class="tag t-high">未获取</span></td><td>唯一的官方规则来源（评分、时长、模块、交付），当前被拦截</td></tr>
+</table>
+
+<footer>
+  本报告仅依据工作区内可读取的材料生成，不含推测性条款；标注「待补充」「未获取」处需在技术文件可读后回填。
+</footer>
+
+</div>
+</body>
+</html>
